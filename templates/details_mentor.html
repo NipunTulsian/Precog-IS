@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{%block head%}
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>{%endblock%}
+{%block title%}<title>Slots and Link</title>
+{%endblock%}
+{% block body %}
+<!-- Adjust the margins as needed to bring the form closer to the sidebar -->
+<div class="flex flex-row min-h-screen bg-gray-100">
+    <!-- Sidebar should be here, assumed to be part of the layout.html -->
+    <!-- Main content area next to the sidebar -->
+    <div class="flex-1 felx itemss-start p-0"> <!-- Align the top of the content with the sidebar -->
+        <div class="pt-0 pb-4 pl-4 pr-4"> <!-- Removed top padding -->
+            <div class="w-full max-w-2xl ml-4 mr-auto p-8 bg-white rounded-lg shadow-lg"> <!-- Adjusted width, left margin, and centered in the remaining space -->
+                <!-- Settings Form Title -->
+                <h2 class="text-2xl font-semibold mb-8">Available Slots in Week</h2>
+                <!-- Settings form -->
+                <form id="settings-form" method="post" action="/details">
+                    <div class="mb-4">
+                        <label for="meet_link" class="block text-gray-700 text-sm font-bold mb-2">Meet Link<span class="text-red-500">*</span></label>
+                        <input id="meet_link" name="meet_link" type="text" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="{{current_user.meet_link}}">
+                    </div>
+                    {%for slot in slots%}
+                        <div>
+                            <input type="checkbox" id="{{slot.id}}" name="options" value="{{slot.id}}" {% if slot.id in pre_selected %} checked {% endif %}>
+                            <label for="{{slot.id}}">{{slot.slot}}</label>
+                        </div>
+                    {%endfor%}
+                    <div class="flex items-center justify-center">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

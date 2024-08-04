@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{%block title%}<title>Meet Logs</title>{%endblock%}
+{%block body%}
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="container px-4 py-6">
+    <h1 class="text-2xl font-semibold mb-4" style="color: black;">UpComing Meets</h1>
+
+    <!-- <div class="mb-4 flex justify-between">
+        <input type="search" placeholder="Search" class="p-2 border rounded">
+        <div class="flex items-center">
+            <label for="columns" class="mr-2">Rows</label>
+            <input id="columns" type="number" value="10" min="1" class="p-2 border rounded w-20 text-center">
+        </div>
+    </div> -->
+
+    <div class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative" style="color: black;">
+        <table class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
+            <thead>
+                <tr class="text-left">
+                    <th class="bg-gray-100 sticky top-0 p-2">ID</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Mentor</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Mentee</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Affiliation</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Research Problem</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Feedback Looking For</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Date of Meet</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Time of Meet</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for meet in meets_pending %}
+                <tr>
+                    <td>{{ meet.ID }}</td>
+                    <td>{{ meet.mentor }}</td>
+                    <td>{{ meet.mentee }}</td>
+                    <td>{{ meet.affiliation }}</td>
+                    <td>{{ meet.research }}</td>
+                    <td>{{ meet.feedback }}</td>
+                    <td>{{ meet.date }}</td>
+                    <td>{{ meet.time }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="p-2"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="container px-4 py-6">
+    <h1 class="text-2xl font-semibold mb-4" style="color: black;">Completed Meets</h1>
+
+    <!-- <div class="mb-4 flex justify-between">
+        <input type="search" placeholder="Search" class="p-2 border rounded">
+        <div class="flex items-center">
+            <label for="columns" class="mr-2">Rows</label>
+            <input id="columns" type="number" value="10" min="1" class="p-2 border rounded w-20 text-center">
+        </div>
+    </div> -->
+
+    <div class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative" style="color: black;">
+        <table class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
+            <thead>
+                <tr class="text-left">
+                    <th class="bg-gray-100 sticky top-0 p-2">ID</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Mentor</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Mentee</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Affiliation</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Research Problem</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Feedback Looking For</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Date of Meet</th>
+                    <th class="bg-gray-100 sticky top-0 p-2">Time of Meet</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for meet in meets_completed %}
+                <tr>
+                    <td>{{ meet.ID }}</td>
+                    <td>{{ meet.mentor }}</td>
+                    <td>{{ meet.mentee }}</td>
+                    <td>{{ meet.affiliation }}</td>
+                    <td>{{ meet.research }}</td>
+                    <td>{{ meet.feedback }}</td>
+                    <td>{{ meet.date }}</td>
+                    <td>{{ meet.time }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="p-2"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+{%endblock%}

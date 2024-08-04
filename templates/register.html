@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{%block head%}
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>{%endblock%}
+{%block title%}<title>Register</title>
+{%endblock%}
+{% block body %}
+<!-- Adjust the margins as needed to bring the form closer to the sidebar -->
+<div class="flex flex-row min-h-screen bg-gray-100">
+    <!-- Sidebar should be here, assumed to be part of the layout.html -->
+    <!-- Main content area next to the sidebar -->
+    <div class="flex-1 felx itemss-start p-0"> <!-- Align the top of the content with the sidebar -->
+        <div class="pt-0 pb-4 pl-4 pr-4"> <!-- Removed top padding -->
+            <div class="w-full max-w-2xl ml-4 mr-auto p-8 bg-white rounded-lg shadow-lg"> <!-- Adjusted width, left margin, and centered in the remaining space -->
+                <!-- Settings Form Title -->
+                <h2 class="text-2xl font-semibold mb-8">Ph.D. Clinic Student Slot Request</h2>
+                <!-- Settings form -->
+                <form id="settings-form" method="post" action="/register_form">
+                    <div class="mb-4">
+                        <label for="affiliation" class="block text-gray-700 text-sm font-bold mb-2">Your affiliation? Where your Ph.D. is registered?*<span class="text-red-500">*</span></label>
+                        <input id="affiliation" name="affiliation" type="text" required pattern="[a-zA-Z0-9]+" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-4">
+                        <label for="research_problem" class="block text-gray-700 text-sm font-bold mb-2">Research problem that you are working on or interested in working? This can be indicative only. If you can be as specific as possible, this will help match the mentor easily. Please keep it as elaborate as possible, add links to papers you have read, written, courses you have taken online, etc. More information you provide, it will be easy to match and schedule a mentor. DONOT COPY PASTE THE SAME SENTENCE FEW TIMES TO FILL THE SPACE REQUIREMENT OF 200 CHARACTERS!<span class="text-red-500">*</span></label>
+                        <textarea id="research_problem" name="research_problem" type="text" required pattern="[a-zA-Z0-9]+" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="feedback" class="block text-gray-700 text-sm font-bold mb-2">What specific feedback are you looking for in the Clinic? What specific questions you would like to discuss during the Clinic? e.g. would need help in formulating the research problem. Be as explicit as possible, this will help find and schedule a mentor.<span class="text-red-500">*</span></label>
+                        <textarea id="feedback" name="feedback" type="text" required pattern="[a-zA-Z0-9]+" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="mentor" class="block text-gray-700 text-sm font-bold mb-2">Mentor that you would like to interact? Please select a mentor relevant to your area of work. Please select only one Mentor and one slot to start with, if you need more sessions, Mentor and you can decide during the 1st session and you can come back to choose more sessions later. Please do not pick more than one slot!<span class="text-red-500">*</span></label>
+                        <select name="mentor" id="mentor" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="" disabled selected>Select your mentor</option>
+                            {% for mentor in mentors %}
+                              <option value="{{ mentor.id }}">{{ mentor.desc }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="times" class="block text-gray-700 text-sm font-bold mb-2">How many times have you attended #PhDClinic before?<span class="text-red-500">*</span></label>
+                        <select name="times" id="times" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="" disabled selected>Choose</option>
+                            {% for option in time_options %}
+                              <option value="{{ option }}">{{ option }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="flex items-center justify-center">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

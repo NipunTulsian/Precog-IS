@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup for ACM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+  
+<style>
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+    
+    .alert-success {
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+    }
+    
+    .alert-danger {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+</style>
+
+<body class="bg-gray-100 h-screen">
+  <div class="flex items-center justify-center min-h-screen">
+    
+<div class="bg-white shadow-xl rounded-lg overflow-hidden max-w-7xl w-full mx-4">
+            <!-- Inner Container -->
+            <div class="flex flex-row items-center">
+              
+            <!-- Content Section -->
+            <div class="w-3/5 p-12">
+              
+                <h1 class="text-4xl font-bold text-gray-900 mb-6">Register For ACM</h1>
+                <p class="text-gray-700 mb-8">If interested in any topic in computing, Pls register</p>
+                <ul class="space-y-4">
+                    <li><strong>About PhD Clinic</strong> <br> The PhD Clinic, launched in September 2020 by the ACM India Council, facilitates CS PhD students from all over the country to obtain inputs and advice from expert mentors located in premier academic institutions and industry. Currently, about 25+ faculty from top-tier institutions and industry, including IISc, IITs, IIITs, CMI, IMSc, Microsoft Research and JNU have joined as mentors. Mentors spend a few hours each month talking to students and giving concrete and constructive suggestions on their work. Each clinic session is a one-on-one engagement, and a student gets to choose a mentor who works in his/her area from the available list of mentors.</li>
+                </ul>
+            </div>
+          
+          
+          
+             <!-- Form Section -->
+             <div class="w-2/5 p-12 bg-gray-50">
+                    <div class="flex flex-col items-center">
+                <h2 class="text-2xl font-semibold text-blue-800 mb-8">Sign up today and unlock your full potential</h2>
+                <form class="space-y-4" method="post" action="/signup">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label for="first-name" class="text-gray-700">* First Name</label>
+                            <input type="text" id="first-name" name="first_name" placeholder="Enter your last name" required class="mt-1 px-3 py-2 border shadow-sm border-gray-300 rounded-md w-full">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="last-name" class="text-gray-700">* Last Name</label>
+                            <input type="text" id="last-name" name="last_name" placeholder="Enter your last name" class="w-full border-2 border-gray-300 p-2 rounded">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="email" class="text-gray-700">* Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" class="w-full border-2 border-gray-300 p-2 rounded">
+                        </div>
+                
+                        <div class="space-y-2">
+                            <label for="password" class="text-gray-700">* Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter a password" required class="w-full border-2 border-gray-300 p-2 rounded">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="confirm-password" class="text-gray-700">* Confirm Password</label>
+                            <input type="password" id="confirm-password" name="confirm_password" placeholder="Re-enter the password" required class="w-full border-2 border-gray-300 p-2 rounded">
+                        </div>
+                    </div>
+                    <div class="g-recaptcha mb-4" data-sitekey="{{ site_key }}" ></div>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                        {%if category == 'success'%}
+                            <div class="fixed top-0 left-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="modal">
+                                <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+                                    <div class="mt-3 text-center">
+                                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100">
+                                            <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-lg leading-6 font-medium text-gray-900">Successful</h3>
+                                        <div class="mt-2 px-7 py-3">
+                                            <p class="text-sm text-gray-500">Account has been successfully registered.Please Login</p>
+                                        </div>
+                                        <div class="items-center px-4 py-3">
+                                            <button id="ok-btn" class="px-4 py-2 bg-blue-600 text-white
+                                                                text-base font-medium rounded-md w-full
+                                                                shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                OK
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                let modal = document.getElementById('modal');
+                                let button = document.getElementById('ok-btn');
+                        
+                                button.onclick = function () {
+                                    window.location.href = "/"
+                                };
+                        
+                                
+                            </script>
+                        {%else%}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                            <span class="close-button" style="position: absolute; top: 10px; right: 5px; cursor: pointer;">X</span>
+                        </div>
+                        {%endif%}
+                        {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    <button type="submit" class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Sign up with Email</button>
+                   <!-- <div class="text-center text-sm text-gray-500 mt-4">OR</div>
+                    <button type="button" class="w-full bg-white text-gray-500 px-4 py-2 rounded-md border border-gray-300 shadow-sm hover:bg-gray-50">Sign up with Google</button> -->
+               
+                    <p class="text-gray-500 text-xs text-center mt-4">
+                        Your privacy and data security are our top priorities. We pledge to protect your information and use it solely to enhance your Snowlog experience.
+                    </p>
+                    <p class="text-center mt-4">
+                        <a href="/" class="text-blue-500">Already have an account? Sign in</a>
+                    </p>
+                </form>
+                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                <script>
+                    $('body').on('keydown', function () {
+                        $('.alert').remove();
+                      });
+                </script>
+            </div>
+        </div>
+    </div>
+   </div>
+    </div>
+</body>
+</html>

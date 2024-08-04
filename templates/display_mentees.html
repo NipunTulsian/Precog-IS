@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{%block title%}<title>Mentees</title>{%endblock%}
+{%block body%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="{{url_for('static',filename='DataTables/datatables.min.js')}}"></script>
+<link href="{{url_for('static',filename='DataTables/datatables.css')}}" rel="stylesheet">
+
+<script  charset="utf8">
+    $(document).ready(function () {
+        var data = {{ data | tojson }};
+
+        $('#table').DataTable({
+            "data":data,
+            "processing":true,
+            scrollX:true,
+            "searching":false,
+            columns: [
+                { "data":"ID"}, //0
+                { "data":"First Name" },//1
+                { "data":"Last Name" },//2
+                { "data":"Email"},//3
+                {"data":"Registration Date"},//5
+            ],
+            dom: 'Bpftrip',
+            "buttons": [
+                {
+                    extend: 'csv',
+                    text: 'Download CSV',
+                    className: 'csvButton',
+                }
+            ],
+            "pageLength":50,
+            "asStripeClasses":[],
+    })
+})
+</script>
+
+<div class="container-fluid" style="color: black;">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">All Mentees</h1>
+    </div>
+    <table id="table" class="display cell-border stripe row-border order-column" width="100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Registration Date</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+{%endblock%}
