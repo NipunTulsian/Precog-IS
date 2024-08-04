@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `role` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'nipun.tulsian.nt@gmail.com','abc','nipun','tulsian','admin'),(2,'nipun.tulsian@gmail.com','abc','nipun','tulsian','admin');
+INSERT INTO `admin` VALUES (3,'nipun.tulsian@students.iiit.ac.in','abc','nipun','tulsian','admin');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,7 +68,7 @@ CREATE TABLE `meet_details` (
   KEY `mentor_id` (`mentor_id`),
   CONSTRAINT `meet_details_ibfk_1` FOREIGN KEY (`mentee_id`) REFERENCES `mentee` (`id`),
   CONSTRAINT `meet_details_ibfk_2` FOREIGN KEY (`mentor_id`) REFERENCES `mentor` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +128,7 @@ CREATE TABLE `mentor` (
   `slots` text,
   `meet_link` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +137,6 @@ CREATE TABLE `mentor` (
 
 LOCK TABLES `mentor` WRITE;
 /*!40000 ALTER TABLE `mentor` DISABLE KEYS */;
-INSERT INTO `mentor` VALUES (7,'nipun.tulsian.nt@gmail.com','abc','Dr. Sunpreet','Arora','mentor','Visa - Biometrics, Machine Learning, Systems Security','4','ergvdfwf'),(8,'nipun.tulsian.nt@gmail.com','abc','Dr. Siddhartha','Asthana','mentor','MasterCard - Human Computer Interaction/ML',NULL,NULL),(9,'nipun.tulsian.nt@gmail.com','abc','Dr. Arun','Babu','mentor','ARTPARK/IISc - Software Engineering, Cybersecurity',NULL,NULL);
 /*!40000 ALTER TABLE `mentor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,4 +173,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-04 16:51:24
+-- Dump completed on 2024-08-04 22:28:34

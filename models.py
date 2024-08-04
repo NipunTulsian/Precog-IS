@@ -23,7 +23,7 @@ class Mentor(db.Model, UserMixin):
     last_name = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(255), nullable=True, default="mentor")
     Description = db.Column(db.Text, nullable=True)
-    slots = db.Column(db.Text, nullable=True)
+    slots = db.Column(db.Text, nullable=True, default="1,5,9")
     meet_link = db.Column(db.String(1024), nullable=True)
 
     def get_id(self):

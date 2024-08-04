@@ -23,8 +23,8 @@ def login():
                 return redirect(url_for('dashboard.dashboard'))
         user = Mentor.query.filter_by(email=email).first()
         if user:
-            # password_cor=check_password_hash(user.password,password)
-            if password==user.password:
+            password_cor=check_password_hash(user.password,password)
+            if password_cor:
                 login_user(user)
                 session['email']=email
                 return redirect(url_for('dashboard.dashboard_mentor'))
